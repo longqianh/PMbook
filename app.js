@@ -394,6 +394,22 @@ const hiringProcessUrls = {
   Amgen: "https://careers.amgen.com/en/how-we-hire",
 };
 
+const glassdoorCompanyAliases = {
+  "Alphabet / Google": "google",
+  Nvidia: "nvidia",
+  Meta: "meta",
+  "Applied Materials": "applied-materials",
+  "Lam Research": "lam-research",
+  "Palo Alto Networks": "palo-alto-networks",
+  "Scale AI": "scale-ai",
+  "Character.AI": "character-ai",
+  "Lucid Motors": "lucid-motors",
+  "Rocket Lab": "rocket-lab",
+  "Gilead Sciences": "gilead-sciences",
+  "Intuitive Surgical": "intuitive-surgical",
+  "Guardant Health": "guardant-health",
+};
+
 const UI_STORE_KEY = "pm-intel-portal-language";
 
 const translations = {
@@ -417,6 +433,7 @@ const translations = {
     careers: "Career site",
     companyNews: "Newsroom / blog",
     interviewInfo: "Hiring process",
+    sharedQuestions: "Shared questions",
     prepTitle: "How To Prepare",
     prepBody: "Use these when a role looks real.",
     questionsTitle: "Questions & Exams",
@@ -444,6 +461,7 @@ const translations = {
     careers: "公司招聘站",
     companyNews: "官方新闻 / 博客",
     interviewInfo: "招聘流程",
+    sharedQuestions: "经验 / 题目分享",
     prepTitle: "如何准备",
     prepBody: "当某个职位看起来值得投入时，先看这些准备资料。",
     questionsTitle: "题库与面试题",
@@ -637,6 +655,39 @@ function newsUrl(company) {
   return newsroomUrls[company] || careerHomeUrls[company];
 }
 
+function sharedQuestionsUrl(company) {
+  const companySlug = glassdoorCompanyAliases[company] || company.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  const roleSlug = "product-manager";
+  const roleLength = roleSlug.length;
+  const companyStart = roleLength + 1;
+  const companyEnd = companyStart + companySlug.length;
+  return `https://www.glassdoor.com/Interview/${roleSlug}-${companySlug}-interview-questions-SRCH_KO0%2C${roleLength}_KE${companyStart}%2C${companyEnd}.htm`;
+}
+
+function cardLinks(company, role) {
+  const linkSpecs = [
+    { key: "pmRoles", href: googleJobsUrl(company, role) },
+    { key: "careers", href: companyCareersUrl(company) },
+    { key: "companyNews", href: newsUrl(company) },
+    { key: "interviewInfo", href: interviewUrl(company) },
+    { key: "sharedQuestions", href: sharedQuestionsUrl(company) },
+  ];
+  const merged = [];
+  linkSpecs.forEach((link) => {
+    const existing = merged.find((item) => item.href === link.href);
+    if (existing) {
+      existing.keys.push(link.key);
+    } else {
+      merged.push({ href: link.href, keys: [link.key] });
+    }
+  });
+  return merged;
+}
+
+function linkLabel(keys) {
+  return keys.map((key) => t(key)).join(currentLanguage === "zh" ? " / " : " + ");
+}
+
 function t(key, replacements = {}) {
   let value = translations[currentLanguage][key] || translations.en[key] || key;
   Object.entries(replacements).forEach(([name, replacement]) => {
@@ -710,6 +761,12 @@ function renderCompanies() {
     ? companies
         .map(([name, focus, location, segment], index) => {
           const originalRank = californiaCompanies.findIndex((company) => company[0] === name) + 1;
+          const links = cardLinks(name, role)
+            .map(
+              (link) =>
+                `<a class="mini-link" href="${link.href}" target="_blank" rel="noreferrer">${escapeHtml(linkLabel(link.keys))}</a>`,
+            )
+            .join("");
           return `
             <article class="company-card">
               <div class="company-head">
@@ -726,12 +783,7 @@ function renderCompanies() {
                 <span class="pill">${escapeHtml(segmentLabel(segment))}</span>
                 <span class="pill">${escapeHtml(roleLabel(role))}</span>
               </div>
-              <div class="link-row">
-                <a class="mini-link" href="${googleJobsUrl(name, role)}" target="_blank" rel="noreferrer">${escapeHtml(t("pmRoles"))}</a>
-                <a class="mini-link" href="${companyCareersUrl(name)}" target="_blank" rel="noreferrer">${escapeHtml(t("careers"))}</a>
-                <a class="mini-link" href="${newsUrl(name)}" target="_blank" rel="noreferrer">${escapeHtml(t("companyNews"))}</a>
-                <a class="mini-link" href="${interviewUrl(name)}" target="_blank" rel="noreferrer">${escapeHtml(t("interviewInfo"))}</a>
-              </div>
+              <div class="link-row">${links}</div>
             </article>
           `;
         })

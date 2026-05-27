@@ -4,7 +4,7 @@ A static information portal for product manager job search research focused on 1
 
 ## Panels
 
-- **PM Positions**: top-100 California company list with direct official career/job-board links, PM-filtered role links where supported, official newsroom/blog links, and official hiring-process/careers information links.
+- **PM Positions**: top-100 California company list with direct official career/job-board links, PM-filtered role links where supported, official newsroom/blog links, official hiring-process/careers information links, and shared interview-question/experience links.
 - **How To Prepare**: curated PM preparation resources.
 - **Questions & Exams**: curated PM question banks and interview-practice resources.
 
