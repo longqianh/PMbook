@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PM Job Copilot</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">PM</div>
+          <div>
+            <h1>PM Job Copilot</h1>
+            <p id="todayLine"></p>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="button ghost" id="importButton" type="button">Import</button>
+          <button class="button ghost" id="exportButton" type="button">Export</button>
+          <button class="button danger" id="resetButton" type="button">Reset</button>
+          <input id="importFile" type="file" accept="application/json" hidden />
+        </div>
+      </header>
+
+      <div class="layout">
+        <nav class="sidebar" aria-label="Primary">
+          <button class="nav-button active" type="button" data-view-target="dashboard">Dashboard</button>
+          <button class="nav-button" type="button" data-view-target="pipeline">Pipeline</button>
+          <button class="nav-button" type="button" data-view-target="targeting">Targeting</button>
+          <button class="nav-button" type="button" data-view-target="fit">Fit Lab</button>
+          <button class="nav-button" type="button" data-view-target="network">Network</button>
+          <button class="nav-button" type="button" data-view-target="outreach">Outreach</button>
+          <button class="nav-button" type="button" data-view-target="stories">Story Bank</button>
+          <button class="nav-button" type="button" data-view-target="interview">Interview</button>
+          <button class="nav-button" type="button" data-view-target="decision">Decision</button>
+          <button class="nav-button" type="button" data-view-target="plan">Weekly Plan</button>
+          <button class="nav-button" type="button" data-view-target="brief">Brief</button>
+        </nav>
+
+        <main class="main">
+          <section class="view active" id="dashboard" aria-labelledby="dashboardTitle">
+            <div class="section-header">
+              <div>
+                <h2 id="dashboardTitle">Dashboard</h2>
+                <p>PM search operating view</p>
+              </div>
+              <button class="button primary" type="button" data-open-dialog="jobDialog">Add Opportunity</button>
+            </div>
+
+            <div class="kpi-grid" id="kpiGrid"></div>
+
+            <div class="dashboard-grid">
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Today</h3>
+                  <span id="todayCount" class="count-pill"></span>
+                </div>
+                <div id="todayFocus" class="stack"></div>
+              </section>
+
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Stage Mix</h3>
+                  <span id="stageTotal" class="count-pill"></span>
+                </div>
+                <div id="stageBars" class="bar-stack"></div>
+              </section>
+
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Risk Queue</h3>
+                  <span id="riskCount" class="count-pill"></span>
+                </div>
+                <div id="riskQueue" class="stack"></div>
+              </section>
+            </div>
+          </section>
+
+          <section class="view" id="pipeline" aria-labelledby="pipelineTitle">
+            <div class="section-header">
+              <div>
+                <h2 id="pipelineTitle">Pipeline</h2>
+                <p>Opportunities by stage</p>
+              </div>
+              <button class="button primary" type="button" data-open-dialog="jobDialog">Add Opportunity</button>
+            </div>
+
+            <div class="toolbar">
+              <label>
+                Search
+                <input id="pipelineSearch" type="search" placeholder="Company, role, tag" />
+              </label>
+              <label>
+                Stage
+                <select id="stageFilter"></select>
+              </label>
+              <label>
+                Priority
+                <select id="priorityFilter">
+                  <option value="all">All priorities</option>
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="kanban" id="kanban"></div>
+          </section>
+
+          <section class="view" id="targeting" aria-labelledby="targetingTitle">
+            <div class="section-header">
+              <div>
+                <h2 id="targetingTitle">Targeting</h2>
+                <p>Role thesis and fit scoring</p>
+              </div>
+              <button class="button primary" type="button" data-open-dialog="roleDialog">Add Target Role</button>
+            </div>
+
+            <div class="two-column">
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Search Thesis</h3>
+                </div>
+                <form class="form-grid" id="profileForm">
+                  <label>
+                    Target title
+                    <input name="targetTitle" type="text" />
+                  </label>
+                  <label>
+                    Location
+                    <input name="location" type="text" />
+                  </label>
+                  <label>
+                    Company thesis
+                    <textarea name="companyThesis" rows="4"></textarea>
+                  </label>
+                  <label>
+                    PM strengths
+                    <textarea name="strengths" rows="4"></textarea>
+                  </label>
+                  <label>
+                    Search constraints
+                    <textarea name="constraints" rows="3"></textarea>
+                  </label>
+                  <label>
+                    Resume keywords
+                    <textarea name="keywords" rows="3"></textarea>
+                  </label>
+                  <button class="button primary" type="submit">Save Thesis</button>
+                </form>
+              </section>
+
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Target Roles</h3>
+                  <span id="roleCount" class="count-pill"></span>
+                </div>
+                <div id="targetRoles" class="stack"></div>
+              </section>
+            </div>
+          </section>
+
+          <section class="view" id="fit" aria-labelledby="fitTitle">
+            <div class="section-header">
+              <div>
+                <h2 id="fitTitle">Fit Lab</h2>
+                <p>JD match and resume targeting</p>
+              </div>
+            </div>
+
+            <div class="two-column">
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Job Description</h3>
+                </div>
+                <form class="form-grid" id="fitForm">
+                  <label>
+                    Opportunity
+                    <select name="jobId" id="fitJobSelect"></select>
+                  </label>
+                  <label>
+                    Job description
+                    <textarea name="jobDescription" id="fitDescription" rows="14"></textarea>
+                  </label>
+                  <button class="button primary" type="submit">Analyze Fit</button>
+                </form>
+              </section>
+
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Match Summary</h3>
+                  <span id="fitScoreLabel" class="count-pill"></span>
+                </div>
+                <div id="fitSummary" class="brief-output"></div>
+              </section>
+            </div>
+
+            <section class="surface">
+              <div class="panel-heading">
+                <h3>Resume Tailoring</h3>
+                <button class="button ghost" type="button" id="addFitActionsButton">Add Actions</button>
+              </div>
+              <div id="fitTailoring" class="card-grid"></div>
+            </section>
+          </section>
+
+          <section class="view" id="network" aria-labelledby="networkTitle">
+            <div class="section-header">
+              <div>
+                <h2 id="networkTitle">Network</h2>
+                <p>Contacts and referral paths</p>
+              </div>
+              <button class="button primary" type="button" data-open-dialog="contactDialog">Add Contact</button>
+            </div>
+
+            <div class="table-shell">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Company</th>
+                    <th>Relationship</th>
+                    <th>Status</th>
+                    <th>Follow-up</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="contactRows"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="view" id="outreach" aria-labelledby="outreachTitle">
+            <div class="section-header">
+              <div>
+                <h2 id="outreachTitle">Outreach</h2>
+                <p>Referral, recruiter, and follow-up drafts</p>
+              </div>
+            </div>
+
+            <div class="two-column">
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Context</h3>
+                </div>
+                <form class="form-grid" id="outreachForm">
+                  <label>
+                    Opportunity
+                    <select name="jobId" id="outreachJobSelect"></select>
+                  </label>
+                  <label>
+                    Contact
+                    <select name="contactId" id="outreachContactSelect"></select>
+                  </label>
+                  <label>
+                    Message type
+                    <select name="type" id="outreachType">
+                      <option value="warmIntro">Warm intro</option>
+                      <option value="referral">Referral ask</option>
+                      <option value="recruiter">Recruiter note</option>
+                      <option value="followUp">Follow-up</option>
+                    </select>
+                  </label>
+                  <label>
+                    Personal hook
+                    <textarea name="hook" rows="5"></textarea>
+                  </label>
+                  <button class="button primary" type="submit">Generate Draft</button>
+                </form>
+              </section>
+
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Message Draft</h3>
+                  <div class="button-row">
+                    <button class="button ghost" type="button" id="copyOutreachButton">Copy</button>
+                    <button class="button ghost" type="button" id="planOutreachButton">Plan</button>
+                  </div>
+                </div>
+                <textarea id="outreachMessage" class="message-box" rows="16"></textarea>
+              </section>
+            </div>
+          </section>
+
+          <section class="view" id="stories" aria-labelledby="storiesTitle">
+            <div class="section-header">
+              <div>
+                <h2 id="storiesTitle">Story Bank</h2>
+                <p>PM examples mapped to competencies</p>
+              </div>
+              <button class="button primary" type="button" data-open-dialog="storyDialog">Add Story</button>
+            </div>
+
+            <div class="toolbar">
+              <label>
+                Competency
+                <select id="storyFilter"></select>
+              </label>
+            </div>
+
+            <div class="card-grid" id="storyCards"></div>
+          </section>
+
+          <section class="view" id="interview" aria-labelledby="interviewTitle">
+            <div class="section-header">
+              <div>
+                <h2 id="interviewTitle">Interview</h2>
+                <p>Prompt drills and notes</p>
+              </div>
+              <button class="button primary" type="button" id="newPromptButton">New Prompt</button>
+            </div>
+
+            <div class="interview-grid">
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Prompt</h3>
+                  <select id="promptCategory"></select>
+                </div>
+                <blockquote id="promptText" class="prompt"></blockquote>
+                <div class="button-row">
+                  <button class="button ghost" type="button" id="savePromptAction">Add To Plan</button>
+                </div>
+              </section>
+
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Timer</h3>
+                </div>
+                <div class="timer" id="timerDisplay">00:00</div>
+                <div class="button-row">
+                  <button class="button primary" type="button" id="timerStart">Start</button>
+                  <button class="button ghost" type="button" id="timerPause">Pause</button>
+                  <button class="button ghost" type="button" id="timerReset">Reset</button>
+                </div>
+              </section>
+            </div>
+
+            <section class="surface">
+              <div class="panel-heading">
+                <h3>Prep Notes</h3>
+                <span id="noteSaved" class="count-pill">Saved</span>
+              </div>
+              <textarea id="prepNotes" rows="10"></textarea>
+            </section>
+          </section>
+
+          <section class="view" id="decision" aria-labelledby="decisionTitle">
+            <div class="section-header">
+              <div>
+                <h2 id="decisionTitle">Decision</h2>
+                <p>Opportunity scoring and tradeoffs</p>
+              </div>
+            </div>
+
+            <div class="two-column">
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Scorecard</h3>
+                </div>
+                <form class="form-grid" id="decisionForm">
+                  <label>
+                    Opportunity
+                    <select name="jobId" id="decisionJobSelect"></select>
+                  </label>
+                  <div class="factor-grid">
+                    <label>Product scope<input name="scope" type="number" min="1" max="5" /></label>
+                    <label>Manager quality<input name="manager" type="number" min="1" max="5" /></label>
+                    <label>Learning curve<input name="learning" type="number" min="1" max="5" /></label>
+                    <label>PM craft<input name="craft" type="number" min="1" max="5" /></label>
+                    <label>Compensation<input name="comp" type="number" min="1" max="5" /></label>
+                    <label>Mission pull<input name="mission" type="number" min="1" max="5" /></label>
+                    <label>Risk control<input name="risk" type="number" min="1" max="5" /></label>
+                  </div>
+                  <label>
+                    Notes
+                    <textarea name="notes" rows="5"></textarea>
+                  </label>
+                  <button class="button primary" type="submit">Save Score</button>
+                </form>
+              </section>
+
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Best Next Move</h3>
+                  <span id="decisionTopScore" class="count-pill"></span>
+                </div>
+                <div id="decisionSummary" class="brief-output"></div>
+              </section>
+            </div>
+
+            <section class="surface">
+              <div class="panel-heading">
+                <h3>Decision Matrix</h3>
+              </div>
+              <div class="table-shell flat">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Opportunity</th>
+                      <th>Total</th>
+                      <th>Stage</th>
+                      <th>Tradeoff</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody id="decisionRows"></tbody>
+                </table>
+              </div>
+            </section>
+          </section>
+
+          <section class="view" id="plan" aria-labelledby="planTitle">
+            <div class="section-header">
+              <div>
+                <h2 id="planTitle">Weekly Plan</h2>
+                <p>Targets and action queue</p>
+              </div>
+            </div>
+
+            <div class="two-column">
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Goals</h3>
+                </div>
+                <form class="goal-form" id="goalForm">
+                  <label>
+                    Applications
+                    <input name="applications" type="number" min="0" />
+                  </label>
+                  <label>
+                    Warm intros
+                    <input name="warmIntros" type="number" min="0" />
+                  </label>
+                  <label>
+                    Interview drills
+                    <input name="interviewDrills" type="number" min="0" />
+                  </label>
+                  <label>
+                    Story updates
+                    <input name="storyUpdates" type="number" min="0" />
+                  </label>
+                  <button class="button primary" type="submit">Save Goals</button>
+                </form>
+                <div id="goalProgress" class="bar-stack"></div>
+              </section>
+
+              <section class="surface">
+                <div class="panel-heading">
+                  <h3>Actions</h3>
+                  <span id="actionCount" class="count-pill"></span>
+                </div>
+                <form class="action-form" id="actionForm">
+                  <input name="text" type="text" placeholder="Action" required />
+                  <select name="area">
+                    <option>Application</option>
+                    <option>Networking</option>
+                    <option>Interview</option>
+                    <option>Resume</option>
+                    <option>Research</option>
+                  </select>
+                  <input name="due" type="date" required />
+                  <button class="button primary" type="submit">Add</button>
+                </form>
+                <div id="actionList" class="stack"></div>
+              </section>
+            </div>
+          </section>
+
+          <section class="view" id="brief" aria-labelledby="briefTitle">
+            <div class="section-header">
+              <div>
+                <h2 id="briefTitle">Brief</h2>
+                <p>One-page PM application brief</p>
+              </div>
+            </div>
+
+            <section class="surface">
+              <div class="toolbar compact">
+                <label>
+                  Opportunity
+                  <select id="briefJobSelect"></select>
+                </label>
+                <button class="button primary" type="button" id="copyBriefButton">Copy Brief</button>
+              </div>
+              <div id="briefOutput" class="brief-output"></div>
+            </section>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <dialog id="jobDialog">
+      <form class="dialog-card" id="jobForm">
+        <div class="dialog-header">
+          <h2 id="jobDialogTitle">Opportunity</h2>
+          <button class="icon-button" type="button" data-close-dialog="jobDialog" aria-label="Close">x</button>
+        </div>
+        <input type="hidden" name="id" />
+        <div class="form-grid two">
+          <label>
+            Company
+            <input name="company" type="text" required />
+          </label>
+          <label>
+            Role title
+            <input name="title" type="text" required />
+          </label>
+          <label>
+            Stage
+            <select name="stage" id="jobStageSelect"></select>
+          </label>
+          <label>
+            Priority
+            <select name="priority">
+              <option>High</option>
+              <option>Medium</option>
+              <option>Low</option>
+            </select>
+          </label>
+          <label>
+            Source
+            <input name="source" type="text" />
+          </label>
+          <label>
+            Contact
+            <input name="contact" type="text" />
+          </label>
+          <label>
+            Date applied
+            <input name="dateApplied" type="date" />
+          </label>
+          <label>
+            Follow-up
+            <input name="followUp" type="date" />
+          </label>
+          <label class="full">
+            Job URL
+            <input name="url" type="url" />
+          </label>
+          <label>
+            Tags
+            <input name="tags" type="text" placeholder="ai, growth, platform" />
+          </label>
+          <label>
+            Next step
+            <input name="nextStep" type="text" />
+          </label>
+          <label class="full">
+            Notes
+            <textarea name="notes" rows="4"></textarea>
+          </label>
+        </div>
+        <div class="dialog-actions">
+          <button class="button ghost" type="button" data-close-dialog="jobDialog">Cancel</button>
+          <button class="button primary" type="button" data-save-form="jobForm">Save Opportunity</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="contactDialog">
+      <form class="dialog-card" id="contactForm">
+        <div class="dialog-header">
+          <h2>Contact</h2>
+          <button class="icon-button" type="button" data-close-dialog="contactDialog" aria-label="Close">x</button>
+        </div>
+        <input type="hidden" name="id" />
+        <div class="form-grid two">
+          <label>
+            Name
+            <input name="name" type="text" required />
+          </label>
+          <label>
+            Company
+            <input name="company" type="text" required />
+          </label>
+          <label>
+            Relationship
+            <input name="relationship" type="text" />
+          </label>
+          <label>
+            Status
+            <select name="status">
+              <option>To contact</option>
+              <option>Reached out</option>
+              <option>Call scheduled</option>
+              <option>Referral requested</option>
+              <option>Referral submitted</option>
+            </select>
+          </label>
+          <label>
+            Follow-up
+            <input name="followUp" type="date" />
+          </label>
+          <label>
+            LinkedIn
+            <input name="url" type="url" />
+          </label>
+          <label class="full">
+            Notes
+            <textarea name="notes" rows="4"></textarea>
+          </label>
+        </div>
+        <div class="dialog-actions">
+          <button class="button ghost" type="button" data-close-dialog="contactDialog">Cancel</button>
+          <button class="button primary" type="button" data-save-form="contactForm">Save Contact</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="storyDialog">
+      <form class="dialog-card" id="storyForm">
+        <div class="dialog-header">
+          <h2>PM Story</h2>
+          <button class="icon-button" type="button" data-close-dialog="storyDialog" aria-label="Close">x</button>
+        </div>
+        <input type="hidden" name="id" />
+        <div class="form-grid two">
+          <label>
+            Title
+            <input name="title" type="text" required />
+          </label>
+          <label>
+            Competency
+            <select name="competency" id="storyCompetencySelect"></select>
+          </label>
+          <label class="full">
+            Situation
+            <textarea name="situation" rows="3"></textarea>
+          </label>
+          <label class="full">
+            Action
+            <textarea name="action" rows="3"></textarea>
+          </label>
+          <label class="full">
+            Impact
+            <textarea name="impact" rows="3"></textarea>
+          </label>
+          <label class="full">
+            Metrics
+            <input name="metrics" type="text" />
+          </label>
+        </div>
+        <div class="dialog-actions">
+          <button class="button ghost" type="button" data-close-dialog="storyDialog">Cancel</button>
+          <button class="button primary" type="button" data-save-form="storyForm">Save Story</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="roleDialog">
+      <form class="dialog-card" id="roleForm">
+        <div class="dialog-header">
+          <h2>Target Role</h2>
+          <button class="icon-button" type="button" data-close-dialog="roleDialog" aria-label="Close">x</button>
+        </div>
+        <input type="hidden" name="id" />
+        <div class="form-grid two">
+          <label>
+            Role
+            <input name="name" type="text" required />
+          </label>
+          <label>
+            Seniority
+            <input name="seniority" type="text" />
+          </label>
+          <label>
+            Company type
+            <input name="companyType" type="text" />
+          </label>
+          <label>
+            Must-have signal
+            <input name="mustHave" type="text" />
+          </label>
+          <label class="full">
+            Search query
+            <input name="query" type="text" />
+          </label>
+          <label class="full">
+            Notes
+            <textarea name="notes" rows="4"></textarea>
+          </label>
+        </div>
+        <div class="dialog-actions">
+          <button class="button ghost" type="button" data-close-dialog="roleDialog">Cancel</button>
+          <button class="button primary" type="button" data-save-form="roleForm">Save Role</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js?v=20260526a"></script>
+  </body>
+</html>
