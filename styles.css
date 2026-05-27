@@ -196,80 +196,6 @@ select:focus {
   box-shadow: var(--shadow);
 }
 
-.guide-panel {
-  margin-bottom: 18px;
-}
-
-.guide-heading {
-  align-items: flex-start;
-}
-
-.guide-profile {
-  justify-content: flex-end;
-  margin-top: 0;
-}
-
-.guide-content {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.guide-card {
-  min-width: 0;
-  padding: 13px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-}
-
-.guide-summary,
-.guide-sources {
-  grid-column: span 3;
-}
-
-.guide-card p {
-  margin: 0;
-  color: var(--muted);
-}
-
-.guide-list {
-  display: grid;
-  gap: 7px;
-  margin: 10px 0 0;
-  padding-left: 18px;
-  color: var(--muted);
-}
-
-.source-link-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(240px, 1fr));
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.source-link {
-  display: grid;
-  gap: 4px;
-  padding: 10px;
-  color: var(--ink);
-  background: #fff7eb;
-  border: 1px solid #e8bd8d;
-  border-radius: var(--radius);
-  text-decoration: none;
-}
-
-.source-link strong {
-  color: var(--orange-dark);
-}
-
-.source-link span {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 750;
-}
-
 .positions-panel {
   grid-area: positions;
   display: flex;
@@ -453,25 +379,6 @@ select:focus {
       "positions"
       "prep"
       "questions";
-  }
-
-  .guide-heading {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .guide-profile {
-    justify-content: flex-start;
-  }
-
-  .guide-content,
-  .source-link-list {
-    grid-template-columns: 1fr;
-  }
-
-  .guide-summary,
-  .guide-sources {
-    grid-column: span 1;
   }
 
   .positions-panel,

@@ -438,10 +438,6 @@ const translations = {
     segmentLabel: "Segment",
     allSegments: "All segments",
     roleLabel: "PM angle",
-    guideEyebrow: "First guide",
-    guideTitle: "Starter Guide: Data Science to PM",
-    guideBody: "A practical first path for someone new to PM with a data science background.",
-    guideSourcesTitle: "Source stack",
     positionsTitle: "PM Positions",
     companyCount: "{shown} of {total} California companies",
     pmRoles: "Official PM roles",
@@ -469,10 +465,6 @@ const translations = {
     segmentLabel: "领域",
     allSegments: "全部领域",
     roleLabel: "PM 方向",
-    guideEyebrow: "第一份指南",
-    guideTitle: "入门指南：数据科学转 PM",
-    guideBody: "给有数据科学背景、刚开始准备 PM 的人一条务实路径。",
-    guideSourcesTitle: "资料来源",
     positionsTitle: "PM 职位信息",
     companyCount: "显示 {shown} / {total} 家加州公司",
     pmRoles: "官方 PM 职位页",
@@ -554,171 +546,6 @@ const segmentLabelsZh = {
   "Security / Cloud": "安全 / 云",
   "Security / Data": "安全 / 数据",
   Semiconductor: "半导体",
-};
-
-const starterGuides = {
-  dataScience: {
-    en: {
-      tags: ["Data science background", "AI / data PM wedge", "4-week first pass"],
-      summary:
-        "Your first advantage is not just SQL, modeling, or dashboards. It is the ability to turn ambiguous user and business problems into measured product decisions. Start with PM roles where data depth is a buying signal: AI PM, data product PM, growth PM, platform PM, marketplace PM, and experimentation-heavy consumer PM.",
-      sections: [
-        {
-          title: "1. Pick a narrow PM wedge",
-          items: [
-            "Prioritize roles that mention AI, data platform, analytics, ranking, marketplace, growth, experimentation, trust, risk, ads, payments, or infrastructure.",
-            "Avoid starting with generic consumer PM roles unless you already have strong user research, launch, or founder-style product proof.",
-            "Use the company panel to make a first target list of 10 companies, then shortlist 3 roles where your DS projects map directly to the product surface.",
-          ],
-        },
-        {
-          title: "2. Rewrite your DS story as product impact",
-          items: [
-            "Convert model and dashboard bullets into PM language: problem, user or stakeholder, decision made, product change, metric moved, and tradeoff handled.",
-            "Prepare one story where you changed a roadmap or operating decision, not only one where you analyzed data correctly.",
-            "Keep one technical story ready for AI/data PM loops, but end it with product value rather than model details.",
-          ],
-        },
-        {
-          title: "3. Build one visible PM proof",
-          items: [
-            "Choose a real product you understand and write a one-page PRD: user segment, pain, opportunity size, solution, MVP scope, success metric, guardrails, risks, and experiment plan.",
-            "Add one funnel or cohort analysis using public or synthetic data. Show how the analysis changes the product decision.",
-            "For AI PM, include an evaluation plan: quality rubric, failure modes, human review path, safety guardrails, and launch criteria.",
-          ],
-        },
-        {
-          title: "4. Practice interviews in the right order",
-          items: [
-            "Start with metrics and execution because this is closest to DS. Then add product sense, strategy, and behavioral loops.",
-            "Practice aloud with a timer. A good answer needs structure, explicit assumptions, customer empathy, metrics, and a crisp recommendation.",
-            "Use community interview posts for company patterns, but verify them against official job descriptions and current hiring pages before overfitting.",
-          ],
-        },
-        {
-          title: "First action today",
-          items: [
-            "Filter the company list for AI, Data, Fintech, Marketplace, Security, or Platform-heavy companies.",
-            "Open 10 official PM role pages and save 3 roles that explicitly reward data, experimentation, AI, or platform judgment.",
-            "Draft a 6-sentence transition pitch: background, PM wedge, strongest product-relevant DS project, user problem, metric impact, and why this company.",
-          ],
-        },
-      ],
-      sources: [
-        {
-          title: "Rednote / Xiaohongshu Explore",
-          note:
-            "Use as a live Chinese-language discovery layer. Search terms: 数据分析转产品经理, AI产品经理面试, 产品经理面试复盘, 小红书产品经理面试.",
-          url: "https://www.xiaohongshu.com/explore",
-        },
-        {
-          title: "1Point3Acres Product Manager board",
-          note: "Durable Chinese PM board with role prep, career path, portfolio, and interview discussion.",
-          url: "https://www.1point3acres.com/bbs/forum-336-1.html",
-        },
-        {
-          title: "1Point3Acres PM interview board",
-          note: "Company-specific PM interview experiences and question patterns.",
-          url: "https://www.1point3acres.com/bbs/forum-335-1.html",
-        },
-        {
-          title: "DS / analytics to PM transition post",
-          note: "Community example of reframing data analysis experience into product management interviews.",
-          url: "https://www.1point3acres.com/bbs/thread-1005946-1-1.html",
-        },
-        {
-          title: "PMExercises",
-          note: "Large PM question and practice bank for repeated drills.",
-          url: "https://www.productmanagementexercises.com/",
-        },
-        {
-          title: "Lewis Lin PM Resources",
-          note: "Compact PM frameworks, company guides, and prep checklists.",
-          url: "https://www.lewis-lin.com/resources/",
-        },
-      ],
-    },
-    zh: {
-      tags: ["数据科学背景", "AI / 数据 PM 切入点", "4 周第一轮准备"],
-      summary:
-        "你的第一优势不只是 SQL、建模或看板，而是能把模糊的用户和业务问题转成可衡量的产品决策。先从数据深度本身就是加分项的 PM 岗位切入：AI PM、数据产品 PM、增长 PM、平台 PM、Marketplace PM，以及高度依赖实验的消费产品 PM。",
-      sections: [
-        {
-          title: "1. 先选窄一点的 PM 切入点",
-          items: [
-            "优先看 JD 里提到 AI、数据平台、分析、排序、Marketplace、增长、实验、风控、广告、支付或基础设施的岗位。",
-            "如果还没有强用户研究、上线或创业型产品证明，不建议一开始就主攻泛消费 PM。",
-            "用公司面板先列 10 家目标公司，再选出 3 个能直接承接你 DS 项目的岗位。",
-          ],
-        },
-        {
-          title: "2. 把 DS 经历改写成产品影响",
-          items: [
-            "把模型和看板经历改成 PM 语言：问题、用户或业务方、做出的决策、产品变化、影响指标和权衡。",
-            "准备一个你影响 roadmap 或业务决策的故事，而不只是数据分析做得正确的故事。",
-            "AI / 数据 PM 面试可以保留一个技术故事，但结尾必须落到产品价值，而不是模型细节。",
-          ],
-        },
-        {
-          title: "3. 做一个可展示的 PM 证明",
-          items: [
-            "选一个你熟悉的真实产品，写一页 PRD：用户、痛点、机会、方案、MVP 范围、成功指标、护栏指标、风险和实验计划。",
-            "用公开或模拟数据补一个漏斗或 cohort 分析，说明分析如何改变产品决策。",
-            "如果准备 AI PM，补上评估方案：质量标准、失败模式、人工审核、安全护栏和上线标准。",
-          ],
-        },
-        {
-          title: "4. 按正确顺序练面试",
-          items: [
-            "先练指标和执行，因为这离 DS 最近。再补产品感、战略和行为面试。",
-            "计时开口练。好的回答要有结构、明确假设、用户共情、指标判断和清晰建议。",
-            "社区面经可以用来看公司模式，但不要过拟合；要和官方 JD、当前招聘页互相验证。",
-          ],
-        },
-        {
-          title: "今天第一步",
-          items: [
-            "在公司列表里先筛 AI、Data、Fintech、Marketplace、Security 或 Platform-heavy 公司。",
-            "打开 10 个官方 PM 岗位页，保存 3 个明确看重数据、实验、AI 或平台判断的岗位。",
-            "写 6 句话转型 pitch：背景、PM 切入点、最像产品工作的 DS 项目、用户问题、指标影响，以及为什么是这家公司。",
-          ],
-        },
-      ],
-      sources: [
-        {
-          title: "小红书 / Rednote 探索页",
-          note:
-            "适合做中文社区实时发现。建议搜索：数据分析转产品经理、AI产品经理面试、产品经理面试复盘、小红书产品经理面试。",
-          url: "https://www.xiaohongshu.com/explore",
-        },
-        {
-          title: "一亩三分地产品经理版",
-          note: "稳定的中文 PM 版块，覆盖求职、职业路径、作品集和面试讨论。",
-          url: "https://www.1point3acres.com/bbs/forum-336-1.html",
-        },
-        {
-          title: "一亩三分地 PM 面经版",
-          note: "按公司沉淀 PM 面试经验和题型模式。",
-          url: "https://www.1point3acres.com/bbs/forum-335-1.html",
-        },
-        {
-          title: "数据分析 / 产品管理转型帖",
-          note: "社区案例：如何把数据分析经历改写为产品管理面试叙事。",
-          url: "https://www.1point3acres.com/bbs/thread-1005946-1-1.html",
-        },
-        {
-          title: "PMExercises",
-          note: "大型 PM 题库和练习平台，适合反复刷题和模拟。",
-          url: "https://www.productmanagementexercises.com/",
-        },
-        {
-          title: "Lewis Lin PM Resources",
-          note: "PM 框架、公司指南和准备清单。",
-          url: "https://www.lewis-lin.com/resources/",
-        },
-      ],
-    },
-  },
 };
 
 const prepResources = [
@@ -961,49 +788,9 @@ function applyLanguage() {
   languageSelect.value = currentLanguage;
   renderRoleOptions();
   renderSegments();
-  renderStarterGuide();
   renderResources("prepResources", prepResources);
   renderResources("questionResources", questionResources);
   renderCompanies();
-}
-
-function renderStarterGuide() {
-  const guide = starterGuides.dataScience[currentLanguage] || starterGuides.dataScience.en;
-  document.getElementById("guideProfilePills").innerHTML = guide.tags
-    .map((tag) => `<span class="pill">${escapeHtml(tag)}</span>`)
-    .join("");
-  document.getElementById("starterGuide").innerHTML = `
-    <article class="guide-card guide-summary">
-      <p>${escapeHtml(guide.summary)}</p>
-    </article>
-    ${guide.sections
-      .map(
-        (section) => `
-          <article class="guide-card">
-            <h3>${escapeHtml(section.title)}</h3>
-            <ul class="guide-list">
-              ${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
-            </ul>
-          </article>
-        `,
-      )
-      .join("")}
-    <article class="guide-card guide-sources">
-      <h3>${escapeHtml(t("guideSourcesTitle"))}</h3>
-      <div class="source-link-list">
-        ${guide.sources
-          .map(
-            (source) => `
-              <a class="source-link" href="${source.url}" target="_blank" rel="noreferrer">
-                <strong>${escapeHtml(source.title)}</strong>
-                <span>${escapeHtml(source.note)}</span>
-              </a>
-            `,
-          )
-          .join("")}
-      </div>
-    </article>
-  `;
 }
 
 function renderRoleOptions() {
