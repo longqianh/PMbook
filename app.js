@@ -774,12 +774,12 @@ function renderCompanies() {
                   <span class="rank">${originalRank}</span>
                   <div>
                     <strong>${escapeHtml(name)}</strong>
+                    <div class="company-location">${escapeHtml(location)}</div>
                     <p>${escapeHtml(focus)}</p>
                   </div>
                 </div>
               </div>
               <div class="pill-row">
-                <span class="pill">${escapeHtml(location)}</span>
                 <span class="pill">${escapeHtml(segmentLabel(segment))}</span>
                 <span class="pill">${escapeHtml(roleLabel(role))}</span>
               </div>
