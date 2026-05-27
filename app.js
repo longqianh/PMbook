@@ -3,6 +3,7 @@ const californiaCompanies = [
   ["Alphabet / Google", "Search, ads, cloud, AI", "Mountain View", "AI / Cloud"],
   ["Nvidia", "AI chips, accelerated computing", "Santa Clara", "AI / Semiconductor"],
   ["Meta", "Social, ads, AI, VR", "Menlo Park", "Consumer / AI"],
+  ["Amazon", "Marketplace, AWS, ads, devices, AI", "Santa Monica / Culver City / Bay Area", "Marketplace / Cloud"],
   ["Broadcom", "Semiconductors, infrastructure software", "Palo Alto", "Semiconductor"],
   ["Oracle", "Cloud, databases, enterprise software", "Redwood City / Austin", "Enterprise"],
   ["Cisco", "Networking, security, collaboration", "San Jose", "Enterprise"],
@@ -98,7 +99,6 @@ const californiaCompanies = [
   ["Dexcom", "Diabetes devices and software", "San Diego", "Health"],
   ["Intuitive Surgical", "Robotic surgery", "Sunnyvale", "Health / Robotics"],
   ["Guardant Health", "Cancer diagnostics", "Palo Alto", "Health / Data"],
-  ["23andMe", "Consumer genetics", "Sunnyvale", "Health / Consumer"],
 ];
 
 const careerHomeUrls = {
@@ -106,6 +106,7 @@ const careerHomeUrls = {
   "Alphabet / Google": "https://www.google.com/about/careers/applications/jobs/results/",
   Nvidia: "https://jobs.nvidia.com/careers",
   Meta: "https://www.metacareers.com/jobs/",
+  Amazon: "https://www.amazon.jobs/en/",
   Broadcom: "https://www.broadcom.com/company/careers",
   Oracle: "https://careers.oracle.com/jobs/",
   Cisco: "https://jobs.cisco.com/jobs/SearchJobs/",
@@ -201,7 +202,6 @@ const careerHomeUrls = {
   Dexcom: "https://careers.dexcom.com/careers-home/jobs",
   "Intuitive Surgical": "https://careers.intuitive.com/en/jobs/",
   "Guardant Health": "https://guardanthealth.com/jobs/",
-  "23andMe": "https://www.23andme.com/careers/jobs/",
 };
 
 const positionUrls = {
@@ -209,6 +209,7 @@ const positionUrls = {
   "Alphabet / Google": "https://www.google.com/about/careers/applications/jobs/results/?q=Product%20Manager&location=California",
   Nvidia: "https://jobs.nvidia.com/careers?query=product%20manager&location=California",
   Meta: "https://www.metacareers.com/jobs/?q=Product%20Manager&offices%5B0%5D=Menlo%20Park%2C%20CA&offices%5B1%5D=San%20Francisco%2C%20CA",
+  Amazon: "https://www.amazon.jobs/en/search?base_query=Product%20Manager&loc_query=California%2C%20United%20States",
   Oracle: "https://careers.oracle.com/jobs/#en/sites/jobsearch/requisitions?keyword=Product%20Manager&location=California",
   Cisco: "https://jobs.cisco.com/jobs/SearchJobs/Product%20Manager?21178=%5B169482%5D&21178_format=6020",
   Salesforce: "https://careers.salesforce.com/en/jobs/?search=Product%20Manager&country=United%20States%20of%20America&state=California",
@@ -258,6 +259,7 @@ const newsroomUrls = {
   "Alphabet / Google": "https://blog.google/",
   Nvidia: "https://nvidianews.nvidia.com/",
   Meta: "https://about.fb.com/news/",
+  Amazon: "https://www.aboutamazon.com/news",
   Broadcom: "https://investors.broadcom.com/news-releases",
   Oracle: "https://www.oracle.com/news/",
   Cisco: "https://newsroom.cisco.com/",
@@ -353,7 +355,6 @@ const newsroomUrls = {
   Dexcom: "https://www.dexcom.com/news",
   "Intuitive Surgical": "https://www.intuitive.com/en-us/about-us/newsroom",
   "Guardant Health": "https://guardanthealth.com/newsroom/",
-  "23andMe": "https://mediacenter.23andme.com/",
 };
 
 const hiringProcessUrls = {
@@ -361,6 +362,7 @@ const hiringProcessUrls = {
   "Alphabet / Google": "https://www.google.com/about/careers/applications/how-we-hire/",
   Nvidia: "https://www.nvidia.com/en-us/about-nvidia/careers/",
   Meta: "https://www.metacareers.com/careerprograms/pathways/",
+  Amazon: "https://www.amazon.jobs/content/en/how-we-hire",
   Oracle: "https://www.oracle.com/careers/culture-and-inclusion/",
   Cisco: "https://jobs.cisco.com/jobs/content/Our-Hiring-Process/",
   Salesforce: "https://careers.salesforce.com/en/how-we-hire/",
@@ -414,6 +416,7 @@ const onePointThreeAcresPmUrls = {
   Apple: "https://www.1point3acres.com/bbs/thread-555279-1-1.html",
   "Alphabet / Google": "https://www.1point3acres.com/bbs/thread-1134631-1-1.html",
   Meta: "https://www.1point3acres.com/bbs/thread-573697-1-1.html",
+  Amazon: "https://www.1point3acres.com/bbs/thread-742362-1-1.html",
   Uber: "https://www.1point3acres.com/bbs/thread-809263-1-1.html",
   Airbnb: "https://www.1point3acres.com/bbs/thread-357332-1-1.html",
   Coinbase: "https://www.1point3acres.com/bbs/thread-1128554-1-1.html",
@@ -421,6 +424,64 @@ const onePointThreeAcresPmUrls = {
   OpenAI: "https://www.1point3acres.com/bbs/thread-1109681-1-1.html",
   Stripe: "https://www.1point3acres.com/bbs/thread-645436-1-1.html",
   "Lucid Motors": "https://www.1point3acres.com/bbs/thread-708646-1-1.html",
+};
+
+const companyPmGuideUrls = {
+  Apple: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/apple-pm-interview" }],
+  "Alphabet / Google": [
+    { key: "officialPmGuide", href: "https://d3no4ktch0fdq4.cloudfront.net/public/course/files/PM_Prep_Guide_2.pdf" },
+    { key: "pmGuide", href: "https://www.tryexponent.com/guides/google-product-manager-interview" },
+  ],
+  Nvidia: [
+    { key: "pmGuide", href: "https://igotanoffer.com/en/advice/nvidia-product-manager-interview" },
+    { key: "aiPmGuide", href: "https://www.tryexponent.com/guides/nvidia-ai-product-manager-interview" },
+  ],
+  Meta: [
+    { key: "officialPmGuide", href: "https://d3no4ktch0fdq4.cloudfront.net/public/course/files/Meta_PM_interview_guide.pdf" },
+    { key: "pmGuide", href: "https://www.tryexponent.com/guides/meta-product-manager-interview" },
+  ],
+  Amazon: [
+    { key: "officialPmGuide", href: "https://www.amazon.jobs/content/en/how-we-hire/product-manager-interview-prep" },
+    { key: "officialPmtGuide", href: "https://www.amazon.jobs/content/en/how-we-hire/pm-t-interview-prep" },
+  ],
+  Salesforce: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/salesforce-product-manager-interview-guide" }],
+  Netflix: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/netflix-product-manager-interview" }],
+  Adobe: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/adobe-product-manager-interview" }],
+  Intuit: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/intuit-product-manager-interview" }],
+  Uber: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/uber-product-manager-interview-guide" }],
+  Airbnb: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/airbnb-product-manager-interview" }],
+  DoorDash: [
+    {
+      key: "officialPmGuide",
+      href: "https://assets.website-files.com/62f57607512f156e6e9ae03f/6491bc4ad0bc77d89f649d3c_Product%20Management%20-%20Onsite%20Prep%20Guide.pdf",
+    },
+    { key: "pmGuide", href: "https://www.tryexponent.com/guides/doordash-product-manager-interview" },
+  ],
+  Coinbase: [{ key: "pmGuide", href: "https://igotanoffer.com/blogs/product-manager/coinbase-product-manager-interview" }],
+  Robinhood: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/robinhood-product-manager-interview" }],
+  SoFi: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/sofi-product-manager-interview" }],
+  Atlassian: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/atlassian-product-manager-interview" }],
+  Dropbox: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/dropbox-product-manager-interview" }],
+  Twilio: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/twilio-product-manager-interview" }],
+  Workday: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/workday-product-manager-interview" }],
+  OpenAI: [
+    { key: "officialInterviewGuide", href: "https://openai.com/interview-guide/" },
+    { key: "pmGuide", href: "https://igotanoffer.com/en/advice/openai-product-manager-interview" },
+    { key: "growthPmGuide", href: "https://www.tryexponent.com/guides/openai-growth-product-manager-pm-interview-guide" },
+  ],
+  Perplexity: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/perplexity-ai-product-manager-interview" }],
+  Sierra: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/sierra-agent-product-manager-pm-interview-guide" }],
+  Stripe: [
+    { key: "officialPmProfile", href: "https://stripe.com/jobs/product-manager-jd.pdf" },
+    { key: "pmGuide", href: "https://www.tryexponent.com/guides/stripe-product-manager-interview" },
+  ],
+  Square: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/square-product-manager-interview" }],
+  Instacart: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/instacart-product-manager-interview" }],
+  Lyft: [{ key: "pmGuide", href: "https://igotanoffer.com/blogs/product-manager/lyft-product-manager-interview" }],
+  Pinterest: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/pinterest-product-manager-interview-guide" }],
+  Snap: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/snap-product-manager-interview" }],
+  Roblox: [{ key: "apmGuide", href: "https://www.tryexponent.com/guides/roblox-associate-product-manager-apm-interview-guide" }],
+  SpaceX: [{ key: "pmGuide", href: "https://www.tryexponent.com/guides/spacex-product-manager-pm-interview" }],
 };
 
 const UI_STORE_KEY = "pm-intel-portal-language";
@@ -437,13 +498,24 @@ const translations = {
     searchPlaceholder: "Apple, AI, fintech, San Francisco",
     segmentLabel: "Segment",
     allSegments: "All segments",
+    companySetLabel: "Company set",
+    top100: "Top 100",
+    top30: "Top 30",
     roleLabel: "PM angle",
     positionsTitle: "PM Positions",
-    companyCount: "{shown} of {total} California companies",
+    companyCount: "{shown} of {scope} in selected set",
     pmRoles: "Official PM roles",
     careers: "Career site",
     companyNews: "Newsroom / blog",
     interviewInfo: "Hiring process",
+    officialPmGuide: "Official PM guide",
+    officialPmtGuide: "Official PM-T guide",
+    officialInterviewGuide: "Official interview guide",
+    officialPmProfile: "Official PM profile",
+    pmGuide: "PM prep guide",
+    aiPmGuide: "AI PM guide",
+    growthPmGuide: "Growth PM guide",
+    apmGuide: "APM guide",
     glassdoorQuestions: "Glassdoor questions",
     onePointThreeAcres: "1P3A PM exp",
     prepTitle: "How To Prepare",
@@ -464,13 +536,24 @@ const translations = {
     searchPlaceholder: "Apple、AI、金融科技、旧金山",
     segmentLabel: "领域",
     allSegments: "全部领域",
+    companySetLabel: "公司范围",
+    top100: "前 100",
+    top30: "前 30",
     roleLabel: "PM 方向",
     positionsTitle: "PM 职位信息",
-    companyCount: "显示 {shown} / {total} 家加州公司",
+    companyCount: "当前范围显示 {shown} / {scope} 家公司",
     pmRoles: "官方 PM 职位页",
     careers: "公司招聘站",
     companyNews: "官方新闻 / 博客",
     interviewInfo: "招聘流程",
+    officialPmGuide: "官方 PM 指南",
+    officialPmtGuide: "官方 PM-T 指南",
+    officialInterviewGuide: "官方面试指南",
+    officialPmProfile: "官方 PM 职位画像",
+    pmGuide: "PM 准备指南",
+    aiPmGuide: "AI PM 指南",
+    growthPmGuide: "增长 PM 指南",
+    apmGuide: "APM 指南",
     glassdoorQuestions: "Glassdoor 题目",
     onePointThreeAcres: "一亩三分地 PM 面经",
     prepTitle: "如何准备",
@@ -539,6 +622,7 @@ const segmentLabelsZh = {
   "Health / Robotics": "医疗健康 / 机器人",
   "IoT / Enterprise": "物联网 / 企业服务",
   Marketplace: "交易平台",
+  "Marketplace / Cloud": "交易平台 / 云",
   Mobility: "出行",
   "Mobility / AI": "出行 / 人工智能",
   Productivity: "效率工具",
@@ -550,52 +634,64 @@ const segmentLabelsZh = {
 
 const prepResources = [
   {
-    title: "Amazon PM Interview Prep",
-    source: "Official company guide",
-    note: "Good baseline for PM scope: customer focus, metrics, business models, execution, and behavioral examples.",
-    tags: ["Official", "Company loop", "Behavioral"],
-    zh: {
-      source: "官方公司指南",
-      note: "适合作为 PM 能力基线：客户视角、指标、商业模式、执行力和行为面试案例。",
-      tags: ["官方", "公司流程", "行为面试"],
-    },
-    url: "https://www.amazon.jobs/content/en/how-we-hire/product-manager-interview-prep",
-  },
-  {
-    title: "Meta PM Interview Guide",
-    source: "Company-style guide PDF",
-    note: "Useful for product sense, analytical thinking, and leadership-drive preparation.",
-    tags: ["Product sense", "Execution", "Leadership"],
-    zh: {
-      source: "公司风格指南 PDF",
-      note: "适合准备产品感、分析思维，以及领导力和驱动力相关面试。",
-      tags: ["产品感", "执行", "领导力"],
-    },
-    url: "https://d3no4ktch0fdq4.cloudfront.net/public/course/files/Meta_PM_interview_guide.pdf",
-  },
-  {
-    title: "Interview Pilot PM Guide",
-    source: "Updated PM interview overview",
-    note: "Breaks prep into product sense, execution, metrics, analytics, strategy, technical, and behavioral.",
-    tags: ["Overview", "Question types", "Study map"],
-    zh: {
-      source: "更新版 PM 面试概览",
-      note: "把准备拆成产品感、执行、指标、分析、战略、技术和行为面试。",
-      tags: ["总览", "题型", "准备地图"],
-    },
-    url: "https://www.interviewpilot.app/interview-guides/product-manager",
-  },
-  {
     title: "IGotAnOffer PM Prep",
-    source: "Structured prep guide",
-    note: "Practical staged prep for FAANG-style PM interviews and company-specific loops.",
-    tags: ["FAANG", "Plan", "Company loops"],
+    source: "Popular structured PM prep guide",
+    note: "A broad FAANG+ preparation path for process, question types, staged practice, and company-specific loops.",
+    tags: ["Plan", "FAANG+", "Question types"],
     zh: {
-      source: "结构化准备指南",
-      note: "适合 FAANG 风格 PM 面试，以及按公司流程分阶段准备。",
-      tags: ["大厂", "计划", "公司流程"],
+      source: "热门结构化 PM 准备指南",
+      note: "覆盖 FAANG+ 准备路径、面试流程、题型、分阶段练习和公司差异。",
+      tags: ["计划", "大厂", "题型"],
     },
     url: "https://igotanoffer.com/blogs/product-manager/pm-interview-prep",
+  },
+  {
+    title: "Lenny Rachitsky: Preparing for a PM Interview",
+    source: "Trusted PM operator and newsletter author",
+    note: "Useful high-level prep flow: research the company and product, practice live, then study patterns and frameworks.",
+    tags: ["Trusted person", "Research", "Practice"],
+    zh: {
+      source: "知名 PM 作者与实战操作者",
+      note: "清晰的准备顺序：研究公司和产品、真人模拟练习，再补框架和题型。",
+      tags: ["知名作者", "调研", "练习"],
+    },
+    url: "https://www.lennysnewsletter.com/p/preparing-for-a-pm-interview",
+  },
+  {
+    title: "Cracking the PM Interview",
+    source: "Classic PM interview book by Gayle Laakmann McDowell and Jackie Bavaro",
+    note: "A durable reference for PM resumes, product design questions, behavioral preparation, and role targeting.",
+    tags: ["Book", "Classic", "Career switch"],
+    zh: {
+      source: "Gayle Laakmann McDowell 与 Jackie Bavaro 的经典 PM 面试书",
+      note: "适合系统理解 PM 简历、产品设计题、行为面试和目标岗位选择。",
+      tags: ["书", "经典", "转岗"],
+    },
+    url: "https://www.crackingthepminterview.com/",
+  },
+  {
+    title: "Exponent PM Interview Tips",
+    source: "Popular PM interview prep platform",
+    note: "Practical advice for sourcing opportunities, recruiter screens, hiring manager calls, onsite loops, and offer-stage execution.",
+    tags: ["Interview flow", "Mock practice", "Execution"],
+    zh: {
+      source: "热门 PM 面试准备平台",
+      note: "覆盖找机会、HR 筛选、hiring manager、onsite 和 offer 阶段的实操建议。",
+      tags: ["面试流程", "模拟练习", "执行"],
+    },
+    url: "https://www.tryexponent.com/blog/product-manager-interview-tips",
+  },
+  {
+    title: "PMExercises",
+    source: "Practice bank and mock partner tool",
+    note: "Good for repeatable practice: a large PM question bank, answer examples, and peer mock interview matching.",
+    tags: ["Practice bank", "Mock partners", "Answers"],
+    zh: {
+      source: "题库与模拟面试伙伴工具",
+      note: "适合持续练习：大型 PM 题库、答案参考，以及同伴模拟面试匹配。",
+      tags: ["题库", "模拟伙伴", "答案参考"],
+    },
+    url: "https://www.productmanagementexercises.com/",
   },
   {
     title: "RocketBlocks Product Management",
@@ -610,28 +706,40 @@ const prepResources = [
     url: "https://www.rocketblocks.me/product-management.php",
   },
   {
-    title: "PMExercises",
-    source: "Practice bank and mock partner tool",
-    note: "Good for repeatable practice: large PM question bank, answers, and peer mock interview matching.",
-    tags: ["Practice bank", "Mock partners", "Answers"],
-    zh: {
-      source: "题库与模拟面试伙伴工具",
-      note: "适合持续练习：大型 PM 题库、答案参考，以及同伴模拟面试匹配。",
-      tags: ["题库", "模拟伙伴", "答案参考"],
-    },
-    url: "https://www.productmanagementexercises.com/",
-  },
-  {
     title: "Lewis Lin PM Resources",
-    source: "Curated frameworks and company guides",
-    note: "Useful when you need compact frameworks, company-specific question guides, and a fast prep checklist.",
-    tags: ["Frameworks", "Company guides", "Checklist"],
+    source: "Curated frameworks from a well-known PM interview author",
+    note: "Compact frameworks, checklists, and company-specific prep links from the author of Decode and Conquer.",
+    tags: ["Frameworks", "Checklist", "Author"],
     zh: {
-      source: "框架与公司指南集合",
-      note: "适合快速查框架、公司题型指南和准备清单。",
-      tags: ["框架", "公司指南", "清单"],
+      source: "知名 PM 面试作者整理的框架",
+      note: "Decode and Conquer 作者整理的框架、清单和公司准备链接。",
+      tags: ["框架", "清单", "作者"],
     },
     url: "https://www.lewis-lin.com/resources/",
+  },
+  {
+    title: "Interview Pilot PM Guide",
+    source: "General PM interview overview",
+    note: "A quick taxonomy of product sense, execution, metrics, analytics, strategy, technical, and behavioral rounds.",
+    tags: ["Overview", "Study map", "Round types"],
+    zh: {
+      source: "通用 PM 面试概览",
+      note: "快速拆解产品感、执行、指标、分析、战略、技术和行为面试。",
+      tags: ["总览", "准备地图", "轮次类型"],
+    },
+    url: "https://www.interviewpilot.app/interview-guides/product-manager",
+  },
+  {
+    title: "Stripe PM Organization Guide",
+    source: "Top fintech/product-ops company essay",
+    note: "Field-specific reference for how strong product organizations evaluate PM judgment, product insight, prioritization, and cross-functional conflict.",
+    tags: ["Fintech", "PM craft", "Hiring lens"],
+    zh: {
+      source: "顶级金融科技公司的产品组织文章",
+      note: "用于理解优秀产品组织如何看 PM 判断、产品洞察、优先级和跨团队冲突。",
+      tags: ["金融科技", "PM 能力", "招聘视角"],
+    },
+    url: "https://stripe.com/guides/atlas/building-a-great-pm-org",
   },
 ];
 
@@ -680,11 +788,11 @@ const questionResources = [
     title: "1Point3Acres PM面经",
     source: "Chinese PM interview-experience forum",
     note:
-      "Dedicated PM interview board with company-specific PM-family posts, including OpenAI PM, Apple PM/EPM, Google PM, Uber PM, Stripe PM, Coinbase PM, Robinhood PM, and Lucid PM experiences.",
+      "Dedicated PM interview board with company-specific PM-family posts, including Amazon PM, OpenAI PM, Apple PM/EPM, Google PM, Uber PM, Stripe PM, Coinbase PM, Robinhood PM, and Lucid PM experiences.",
     zh: {
       source: "中文 PM 面试经验版块",
       note:
-        "一亩三分地海外面经下的 PM 面经专版；包含 OpenAI PM、Apple PM/EPM、Google PM、Uber PM、Stripe PM、Coinbase PM、Robinhood PM、Lucid PM 等公司经验。",
+        "一亩三分地海外面经下的 PM 面经专版；包含 Amazon PM、OpenAI PM、Apple PM/EPM、Google PM、Uber PM、Stripe PM、Coinbase PM、Robinhood PM、Lucid PM 等公司经验。",
     },
     url: "https://www.1point3acres.com/bbs/forum-335-1.html",
   },
@@ -704,6 +812,7 @@ const questionResources = [
 
 const searchInput = document.getElementById("companySearch");
 const segmentFilter = document.getElementById("segmentFilter");
+const companySetFilter = document.getElementById("companySetFilter");
 const roleFilter = document.getElementById("roleFilter");
 const languageSelect = document.getElementById("languageSelect");
 let currentLanguage = window.localStorage.getItem(UI_STORE_KEY) || "en";
@@ -737,12 +846,17 @@ function onePointThreeAcresUrl(company) {
   return onePointThreeAcresPmUrls[company];
 }
 
+function companyPmGuideLinks(company) {
+  return companyPmGuideUrls[company] || [];
+}
+
 function cardLinks(company, role) {
   const linkSpecs = [
     { key: "pmRoles", href: googleJobsUrl(company, role) },
     { key: "careers", href: companyCareersUrl(company) },
     { key: "companyNews", href: newsUrl(company) },
     { key: "interviewInfo", href: interviewUrl(company) },
+    ...companyPmGuideLinks(company),
     { key: "glassdoorQuestions", href: sharedQuestionsUrl(company) },
     { key: "onePointThreeAcres", href: onePointThreeAcresUrl(company) },
   ].filter((link) => link.href);
@@ -787,6 +901,7 @@ function applyLanguage() {
   searchInput.placeholder = t("searchPlaceholder");
   languageSelect.value = currentLanguage;
   renderRoleOptions();
+  renderCompanySetOptions();
   renderSegments();
   renderResources("prepResources", prepResources);
   renderResources("questionResources", questionResources);
@@ -801,6 +916,15 @@ function renderRoleOptions() {
   roleFilter.value = selectedRole;
 }
 
+function renderCompanySetOptions() {
+  const selectedSet = companySetFilter.value || "100";
+  companySetFilter.innerHTML = `
+    <option value="100">${escapeHtml(t("top100"))}</option>
+    <option value="30">${escapeHtml(t("top30"))}</option>
+  `;
+  companySetFilter.value = selectedSet;
+}
+
 function renderSegments() {
   const segments = [...new Set(californiaCompanies.map((company) => company[3]))].sort();
   const selectedSegment = segmentFilter.value || "all";
@@ -810,10 +934,15 @@ function renderSegments() {
   segmentFilter.value = selectedSegment;
 }
 
+function scopedCompanies() {
+  const scope = Number(companySetFilter.value) || californiaCompanies.length;
+  return californiaCompanies.slice(0, Math.min(scope, californiaCompanies.length));
+}
+
 function filteredCompanies() {
   const search = searchInput.value.trim().toLowerCase();
   const segment = segmentFilter.value;
-  return californiaCompanies.filter(([name, focus, location, companySegment]) => {
+  return scopedCompanies().filter(([name, focus, location, companySegment]) => {
     const haystack = `${name} ${focus} ${location} ${companySegment}`.toLowerCase();
     const matchesSearch = !search || haystack.includes(search);
     const matchesSegment = segment === "all" || companySegment === segment;
@@ -823,10 +952,11 @@ function filteredCompanies() {
 
 function renderCompanies() {
   const role = roleFilter.value;
+  const scopedCompanyList = scopedCompanies();
   const companies = filteredCompanies();
   document.getElementById("companyCount").textContent = t("companyCount", {
     shown: companies.length,
-    total: californiaCompanies.length,
+    scope: scopedCompanyList.length,
   });
   document.getElementById("companyList").innerHTML = companies.length
     ? companies
@@ -900,7 +1030,7 @@ function renderResources(id, resources) {
 }
 
 function bindEvents() {
-  [searchInput, segmentFilter, roleFilter].forEach((element) => {
+  [searchInput, segmentFilter, companySetFilter, roleFilter].forEach((element) => {
     element.addEventListener("input", renderCompanies);
     element.addEventListener("change", renderCompanies);
   });

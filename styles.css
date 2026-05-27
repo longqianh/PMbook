@@ -139,6 +139,7 @@ a {
 
 .control-panel {
   align-items: end;
+  flex-wrap: wrap;
   margin-bottom: 18px;
   padding: 16px;
   background: var(--surface);
@@ -158,6 +159,11 @@ label {
 
 .language-control {
   min-width: 128px;
+}
+
+.company-set-control {
+  min-width: 150px;
+  max-width: 170px;
 }
 
 input,
