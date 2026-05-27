@@ -410,6 +410,19 @@ const glassdoorCompanyAliases = {
   "Guardant Health": "guardant-health",
 };
 
+const onePointThreeAcresPmUrls = {
+  Apple: "https://www.1point3acres.com/bbs/thread-555279-1-1.html",
+  "Alphabet / Google": "https://www.1point3acres.com/bbs/thread-1134631-1-1.html",
+  Meta: "https://www.1point3acres.com/bbs/thread-573697-1-1.html",
+  Uber: "https://www.1point3acres.com/bbs/thread-809263-1-1.html",
+  Airbnb: "https://www.1point3acres.com/bbs/thread-357332-1-1.html",
+  Coinbase: "https://www.1point3acres.com/bbs/thread-1128554-1-1.html",
+  Robinhood: "https://www.1point3acres.com/bbs/thread-1121797-1-1.html",
+  OpenAI: "https://www.1point3acres.com/bbs/thread-1109681-1-1.html",
+  Stripe: "https://www.1point3acres.com/bbs/thread-645436-1-1.html",
+  "Lucid Motors": "https://www.1point3acres.com/bbs/thread-708646-1-1.html",
+};
+
 const UI_STORE_KEY = "pm-intel-portal-language";
 
 const translations = {
@@ -418,7 +431,6 @@ const translations = {
     title: "PM Intel Portal",
     subtitle: "One place to collect PM role leads, prep guidance, and interview question sources.",
     languageLabel: "Language",
-    liveSearch: "Open first PM board",
     controlsTitle: "Target Filter",
     controlsBody: "Pick a company segment, then open the direct official pages for the matching companies.",
     searchLabel: "Search companies",
@@ -426,14 +438,18 @@ const translations = {
     segmentLabel: "Segment",
     allSegments: "All segments",
     roleLabel: "PM angle",
+    guideEyebrow: "First guide",
+    guideTitle: "Starter Guide: Data Science to PM",
+    guideBody: "A practical first path for someone new to PM with a data science background.",
+    guideSourcesTitle: "Source stack",
     positionsTitle: "PM Positions",
     companyCount: "{shown} of {total} California companies",
-    marketNews: "Open first newsroom",
     pmRoles: "Official PM roles",
     careers: "Career site",
     companyNews: "Newsroom / blog",
     interviewInfo: "Hiring process",
-    sharedQuestions: "Shared questions",
+    glassdoorQuestions: "Glassdoor questions",
+    onePointThreeAcres: "1P3A PM exp",
     prepTitle: "How To Prepare",
     prepBody: "Use these when a role looks real.",
     questionsTitle: "Questions & Exams",
@@ -446,7 +462,6 @@ const translations = {
     title: "PM 信息情报门户",
     subtitle: "集中收集产品经理职位线索、准备资料和面试题来源。",
     languageLabel: "语言",
-    liveSearch: "打开首个 PM 职位页",
     controlsTitle: "目标筛选",
     controlsBody: "选择公司类型，然后打开匹配公司的官方直达页面。",
     searchLabel: "搜索公司",
@@ -454,14 +469,18 @@ const translations = {
     segmentLabel: "领域",
     allSegments: "全部领域",
     roleLabel: "PM 方向",
+    guideEyebrow: "第一份指南",
+    guideTitle: "入门指南：数据科学转 PM",
+    guideBody: "给有数据科学背景、刚开始准备 PM 的人一条务实路径。",
+    guideSourcesTitle: "资料来源",
     positionsTitle: "PM 职位信息",
     companyCount: "显示 {shown} / {total} 家加州公司",
-    marketNews: "打开首个新闻页",
     pmRoles: "官方 PM 职位页",
     careers: "公司招聘站",
     companyNews: "官方新闻 / 博客",
     interviewInfo: "招聘流程",
-    sharedQuestions: "经验 / 题目分享",
+    glassdoorQuestions: "Glassdoor 题目",
+    onePointThreeAcres: "一亩三分地 PM 面经",
     prepTitle: "如何准备",
     prepBody: "当某个职位看起来值得投入时，先看这些准备资料。",
     questionsTitle: "题库与面试题",
@@ -537,14 +556,181 @@ const segmentLabelsZh = {
   Semiconductor: "半导体",
 };
 
+const starterGuides = {
+  dataScience: {
+    en: {
+      tags: ["Data science background", "AI / data PM wedge", "4-week first pass"],
+      summary:
+        "Your first advantage is not just SQL, modeling, or dashboards. It is the ability to turn ambiguous user and business problems into measured product decisions. Start with PM roles where data depth is a buying signal: AI PM, data product PM, growth PM, platform PM, marketplace PM, and experimentation-heavy consumer PM.",
+      sections: [
+        {
+          title: "1. Pick a narrow PM wedge",
+          items: [
+            "Prioritize roles that mention AI, data platform, analytics, ranking, marketplace, growth, experimentation, trust, risk, ads, payments, or infrastructure.",
+            "Avoid starting with generic consumer PM roles unless you already have strong user research, launch, or founder-style product proof.",
+            "Use the company panel to make a first target list of 10 companies, then shortlist 3 roles where your DS projects map directly to the product surface.",
+          ],
+        },
+        {
+          title: "2. Rewrite your DS story as product impact",
+          items: [
+            "Convert model and dashboard bullets into PM language: problem, user or stakeholder, decision made, product change, metric moved, and tradeoff handled.",
+            "Prepare one story where you changed a roadmap or operating decision, not only one where you analyzed data correctly.",
+            "Keep one technical story ready for AI/data PM loops, but end it with product value rather than model details.",
+          ],
+        },
+        {
+          title: "3. Build one visible PM proof",
+          items: [
+            "Choose a real product you understand and write a one-page PRD: user segment, pain, opportunity size, solution, MVP scope, success metric, guardrails, risks, and experiment plan.",
+            "Add one funnel or cohort analysis using public or synthetic data. Show how the analysis changes the product decision.",
+            "For AI PM, include an evaluation plan: quality rubric, failure modes, human review path, safety guardrails, and launch criteria.",
+          ],
+        },
+        {
+          title: "4. Practice interviews in the right order",
+          items: [
+            "Start with metrics and execution because this is closest to DS. Then add product sense, strategy, and behavioral loops.",
+            "Practice aloud with a timer. A good answer needs structure, explicit assumptions, customer empathy, metrics, and a crisp recommendation.",
+            "Use community interview posts for company patterns, but verify them against official job descriptions and current hiring pages before overfitting.",
+          ],
+        },
+        {
+          title: "First action today",
+          items: [
+            "Filter the company list for AI, Data, Fintech, Marketplace, Security, or Platform-heavy companies.",
+            "Open 10 official PM role pages and save 3 roles that explicitly reward data, experimentation, AI, or platform judgment.",
+            "Draft a 6-sentence transition pitch: background, PM wedge, strongest product-relevant DS project, user problem, metric impact, and why this company.",
+          ],
+        },
+      ],
+      sources: [
+        {
+          title: "Rednote / Xiaohongshu Explore",
+          note:
+            "Use as a live Chinese-language discovery layer. Search terms: 数据分析转产品经理, AI产品经理面试, 产品经理面试复盘, 小红书产品经理面试.",
+          url: "https://www.xiaohongshu.com/explore",
+        },
+        {
+          title: "1Point3Acres Product Manager board",
+          note: "Durable Chinese PM board with role prep, career path, portfolio, and interview discussion.",
+          url: "https://www.1point3acres.com/bbs/forum-336-1.html",
+        },
+        {
+          title: "1Point3Acres PM interview board",
+          note: "Company-specific PM interview experiences and question patterns.",
+          url: "https://www.1point3acres.com/bbs/forum-335-1.html",
+        },
+        {
+          title: "DS / analytics to PM transition post",
+          note: "Community example of reframing data analysis experience into product management interviews.",
+          url: "https://www.1point3acres.com/bbs/thread-1005946-1-1.html",
+        },
+        {
+          title: "PMExercises",
+          note: "Large PM question and practice bank for repeated drills.",
+          url: "https://www.productmanagementexercises.com/",
+        },
+        {
+          title: "Lewis Lin PM Resources",
+          note: "Compact PM frameworks, company guides, and prep checklists.",
+          url: "https://www.lewis-lin.com/resources/",
+        },
+      ],
+    },
+    zh: {
+      tags: ["数据科学背景", "AI / 数据 PM 切入点", "4 周第一轮准备"],
+      summary:
+        "你的第一优势不只是 SQL、建模或看板，而是能把模糊的用户和业务问题转成可衡量的产品决策。先从数据深度本身就是加分项的 PM 岗位切入：AI PM、数据产品 PM、增长 PM、平台 PM、Marketplace PM，以及高度依赖实验的消费产品 PM。",
+      sections: [
+        {
+          title: "1. 先选窄一点的 PM 切入点",
+          items: [
+            "优先看 JD 里提到 AI、数据平台、分析、排序、Marketplace、增长、实验、风控、广告、支付或基础设施的岗位。",
+            "如果还没有强用户研究、上线或创业型产品证明，不建议一开始就主攻泛消费 PM。",
+            "用公司面板先列 10 家目标公司，再选出 3 个能直接承接你 DS 项目的岗位。",
+          ],
+        },
+        {
+          title: "2. 把 DS 经历改写成产品影响",
+          items: [
+            "把模型和看板经历改成 PM 语言：问题、用户或业务方、做出的决策、产品变化、影响指标和权衡。",
+            "准备一个你影响 roadmap 或业务决策的故事，而不只是数据分析做得正确的故事。",
+            "AI / 数据 PM 面试可以保留一个技术故事，但结尾必须落到产品价值，而不是模型细节。",
+          ],
+        },
+        {
+          title: "3. 做一个可展示的 PM 证明",
+          items: [
+            "选一个你熟悉的真实产品，写一页 PRD：用户、痛点、机会、方案、MVP 范围、成功指标、护栏指标、风险和实验计划。",
+            "用公开或模拟数据补一个漏斗或 cohort 分析，说明分析如何改变产品决策。",
+            "如果准备 AI PM，补上评估方案：质量标准、失败模式、人工审核、安全护栏和上线标准。",
+          ],
+        },
+        {
+          title: "4. 按正确顺序练面试",
+          items: [
+            "先练指标和执行，因为这离 DS 最近。再补产品感、战略和行为面试。",
+            "计时开口练。好的回答要有结构、明确假设、用户共情、指标判断和清晰建议。",
+            "社区面经可以用来看公司模式，但不要过拟合；要和官方 JD、当前招聘页互相验证。",
+          ],
+        },
+        {
+          title: "今天第一步",
+          items: [
+            "在公司列表里先筛 AI、Data、Fintech、Marketplace、Security 或 Platform-heavy 公司。",
+            "打开 10 个官方 PM 岗位页，保存 3 个明确看重数据、实验、AI 或平台判断的岗位。",
+            "写 6 句话转型 pitch：背景、PM 切入点、最像产品工作的 DS 项目、用户问题、指标影响，以及为什么是这家公司。",
+          ],
+        },
+      ],
+      sources: [
+        {
+          title: "小红书 / Rednote 探索页",
+          note:
+            "适合做中文社区实时发现。建议搜索：数据分析转产品经理、AI产品经理面试、产品经理面试复盘、小红书产品经理面试。",
+          url: "https://www.xiaohongshu.com/explore",
+        },
+        {
+          title: "一亩三分地产品经理版",
+          note: "稳定的中文 PM 版块，覆盖求职、职业路径、作品集和面试讨论。",
+          url: "https://www.1point3acres.com/bbs/forum-336-1.html",
+        },
+        {
+          title: "一亩三分地 PM 面经版",
+          note: "按公司沉淀 PM 面试经验和题型模式。",
+          url: "https://www.1point3acres.com/bbs/forum-335-1.html",
+        },
+        {
+          title: "数据分析 / 产品管理转型帖",
+          note: "社区案例：如何把数据分析经历改写为产品管理面试叙事。",
+          url: "https://www.1point3acres.com/bbs/thread-1005946-1-1.html",
+        },
+        {
+          title: "PMExercises",
+          note: "大型 PM 题库和练习平台，适合反复刷题和模拟。",
+          url: "https://www.productmanagementexercises.com/",
+        },
+        {
+          title: "Lewis Lin PM Resources",
+          note: "PM 框架、公司指南和准备清单。",
+          url: "https://www.lewis-lin.com/resources/",
+        },
+      ],
+    },
+  },
+};
+
 const prepResources = [
   {
     title: "Amazon PM Interview Prep",
     source: "Official company guide",
     note: "Good baseline for PM scope: customer focus, metrics, business models, execution, and behavioral examples.",
+    tags: ["Official", "Company loop", "Behavioral"],
     zh: {
       source: "官方公司指南",
       note: "适合作为 PM 能力基线：客户视角、指标、商业模式、执行力和行为面试案例。",
+      tags: ["官方", "公司流程", "行为面试"],
     },
     url: "https://www.amazon.jobs/content/en/how-we-hire/product-manager-interview-prep",
   },
@@ -552,9 +738,11 @@ const prepResources = [
     title: "Meta PM Interview Guide",
     source: "Company-style guide PDF",
     note: "Useful for product sense, analytical thinking, and leadership-drive preparation.",
+    tags: ["Product sense", "Execution", "Leadership"],
     zh: {
       source: "公司风格指南 PDF",
       note: "适合准备产品感、分析思维，以及领导力和驱动力相关面试。",
+      tags: ["产品感", "执行", "领导力"],
     },
     url: "https://d3no4ktch0fdq4.cloudfront.net/public/course/files/Meta_PM_interview_guide.pdf",
   },
@@ -562,9 +750,11 @@ const prepResources = [
     title: "Interview Pilot PM Guide",
     source: "Updated PM interview overview",
     note: "Breaks prep into product sense, execution, metrics, analytics, strategy, technical, and behavioral.",
+    tags: ["Overview", "Question types", "Study map"],
     zh: {
       source: "更新版 PM 面试概览",
       note: "把准备拆成产品感、执行、指标、分析、战略、技术和行为面试。",
+      tags: ["总览", "题型", "准备地图"],
     },
     url: "https://www.interviewpilot.app/interview-guides/product-manager",
   },
@@ -572,9 +762,11 @@ const prepResources = [
     title: "IGotAnOffer PM Prep",
     source: "Structured prep guide",
     note: "Practical staged prep for FAANG-style PM interviews and company-specific loops.",
+    tags: ["FAANG", "Plan", "Company loops"],
     zh: {
       source: "结构化准备指南",
       note: "适合 FAANG 风格 PM 面试，以及按公司流程分阶段准备。",
+      tags: ["大厂", "计划", "公司流程"],
     },
     url: "https://igotanoffer.com/blogs/product-manager/pm-interview-prep",
   },
@@ -582,11 +774,37 @@ const prepResources = [
     title: "RocketBlocks Product Management",
     source: "Drill platform",
     note: "Practice drills for product sense, strategy, analytical skills, and technical fluency.",
+    tags: ["Drills", "Analytics", "Strategy"],
     zh: {
       source: "练习平台",
       note: "用于训练产品感、战略、分析能力和技术理解力。",
+      tags: ["练习", "分析", "战略"],
     },
     url: "https://www.rocketblocks.me/product-management.php",
+  },
+  {
+    title: "PMExercises",
+    source: "Practice bank and mock partner tool",
+    note: "Good for repeatable practice: large PM question bank, answers, and peer mock interview matching.",
+    tags: ["Practice bank", "Mock partners", "Answers"],
+    zh: {
+      source: "题库与模拟面试伙伴工具",
+      note: "适合持续练习：大型 PM 题库、答案参考，以及同伴模拟面试匹配。",
+      tags: ["题库", "模拟伙伴", "答案参考"],
+    },
+    url: "https://www.productmanagementexercises.com/",
+  },
+  {
+    title: "Lewis Lin PM Resources",
+    source: "Curated frameworks and company guides",
+    note: "Useful when you need compact frameworks, company-specific question guides, and a fast prep checklist.",
+    tags: ["Frameworks", "Company guides", "Checklist"],
+    zh: {
+      source: "框架与公司指南集合",
+      note: "适合快速查框架、公司题型指南和准备清单。",
+      tags: ["框架", "公司指南", "清单"],
+    },
+    url: "https://www.lewis-lin.com/resources/",
   },
 ];
 
@@ -631,6 +849,30 @@ const questionResources = [
     },
     url: "https://www.interviewpilot.app/interview-guides/product-manager",
   },
+  {
+    title: "1Point3Acres PM面经",
+    source: "Chinese PM interview-experience forum",
+    note:
+      "Dedicated PM interview board with company-specific PM-family posts, including OpenAI PM, Apple PM/EPM, Google PM, Uber PM, Stripe PM, Coinbase PM, Robinhood PM, and Lucid PM experiences.",
+    zh: {
+      source: "中文 PM 面试经验版块",
+      note:
+        "一亩三分地海外面经下的 PM 面经专版；包含 OpenAI PM、Apple PM/EPM、Google PM、Uber PM、Stripe PM、Coinbase PM、Robinhood PM、Lucid PM 等公司经验。",
+    },
+    url: "https://www.1point3acres.com/bbs/forum-335-1.html",
+  },
+  {
+    title: "1Point3Acres 产品经理PM版",
+    source: "Chinese PM discussion and prep board",
+    note:
+      "Broader PM forum for preparation threads and PM-specific discussion; indexed examples include Amazon PM leadership-principle interview prep and PM internship interview posts.",
+    zh: {
+      source: "中文产品经理讨论与准备版块",
+      note:
+        "产品经理 PM 专版，用于准备帖和 PM 求职讨论；索引示例包含 Amazon PM 领导力原则面试准备、微软产品经理实习面经等。",
+    },
+    url: "https://www.1point3acres.com/bbs/forum-336-1.html",
+  },
 ];
 
 const searchInput = document.getElementById("companySearch");
@@ -664,14 +906,19 @@ function sharedQuestionsUrl(company) {
   return `https://www.glassdoor.com/Interview/${roleSlug}-${companySlug}-interview-questions-SRCH_KO0%2C${roleLength}_KE${companyStart}%2C${companyEnd}.htm`;
 }
 
+function onePointThreeAcresUrl(company) {
+  return onePointThreeAcresPmUrls[company];
+}
+
 function cardLinks(company, role) {
   const linkSpecs = [
     { key: "pmRoles", href: googleJobsUrl(company, role) },
     { key: "careers", href: companyCareersUrl(company) },
     { key: "companyNews", href: newsUrl(company) },
     { key: "interviewInfo", href: interviewUrl(company) },
-    { key: "sharedQuestions", href: sharedQuestionsUrl(company) },
-  ];
+    { key: "glassdoorQuestions", href: sharedQuestionsUrl(company) },
+    { key: "onePointThreeAcres", href: onePointThreeAcresUrl(company) },
+  ].filter((link) => link.href);
   const merged = [];
   linkSpecs.forEach((link) => {
     const existing = merged.find((item) => item.href === link.href);
@@ -714,9 +961,49 @@ function applyLanguage() {
   languageSelect.value = currentLanguage;
   renderRoleOptions();
   renderSegments();
+  renderStarterGuide();
   renderResources("prepResources", prepResources);
   renderResources("questionResources", questionResources);
   renderCompanies();
+}
+
+function renderStarterGuide() {
+  const guide = starterGuides.dataScience[currentLanguage] || starterGuides.dataScience.en;
+  document.getElementById("guideProfilePills").innerHTML = guide.tags
+    .map((tag) => `<span class="pill">${escapeHtml(tag)}</span>`)
+    .join("");
+  document.getElementById("starterGuide").innerHTML = `
+    <article class="guide-card guide-summary">
+      <p>${escapeHtml(guide.summary)}</p>
+    </article>
+    ${guide.sections
+      .map(
+        (section) => `
+          <article class="guide-card">
+            <h3>${escapeHtml(section.title)}</h3>
+            <ul class="guide-list">
+              ${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+            </ul>
+          </article>
+        `,
+      )
+      .join("")}
+    <article class="guide-card guide-sources">
+      <h3>${escapeHtml(t("guideSourcesTitle"))}</h3>
+      <div class="source-link-list">
+        ${guide.sources
+          .map(
+            (source) => `
+              <a class="source-link" href="${source.url}" target="_blank" rel="noreferrer">
+                <strong>${escapeHtml(source.title)}</strong>
+                <span>${escapeHtml(source.note)}</span>
+              </a>
+            `,
+          )
+          .join("")}
+      </div>
+    </article>
+  `;
 }
 
 function renderRoleOptions() {
@@ -750,13 +1037,10 @@ function filteredCompanies() {
 function renderCompanies() {
   const role = roleFilter.value;
   const companies = filteredCompanies();
-  const firstCompany = companies[0]?.[0];
   document.getElementById("companyCount").textContent = t("companyCount", {
     shown: companies.length,
     total: californiaCompanies.length,
   });
-  document.getElementById("globalSearchLink").href = firstCompany ? googleJobsUrl(firstCompany, role) : "#";
-  document.getElementById("newsSearchLink").href = firstCompany ? newsUrl(firstCompany) : "#";
   document.getElementById("companyList").innerHTML = companies.length
     ? companies
         .map(([name, focus, location, segment], index) => {
@@ -809,11 +1093,17 @@ function renderResources(id, resources) {
     .map(
       (resource) => {
         const localized = currentLanguage === "zh" ? resource.zh || {} : {};
+        const tags = localized.tags || resource.tags || [];
         return `
         <article class="resource-card">
           <strong>${escapeHtml(resource.title)}</strong>
           <p>${escapeHtml(localized.source || resource.source)}</p>
           <p>${escapeHtml(localized.note || resource.note)}</p>
+          ${
+            tags.length
+              ? `<div class="pill-row resource-tags">${tags.map((tag) => `<span class="pill">${escapeHtml(tag)}</span>`).join("")}</div>`
+              : ""
+          }
           <a class="mini-link" href="${resource.url}" target="_blank" rel="noreferrer">${escapeHtml(t("openSource"))}</a>
         </article>
       `;
